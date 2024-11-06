@@ -1,15 +1,23 @@
 # Langchain_RAGProject
 
+### python版本要求
+```text
 Python version==3.10
+```
+###
 
-Model url
+
+#### Model Url(需要下载的模型文件)
+```text
 链接：https://pan.baidu.com/s/1aiq6AS1ucAs_AX9-Wn_klQ?pwd=ARAR 
 提取码：ARAR
+```
+
+###
 
 
-
-会出现的异常提示解决方案
-```python
+#### 会出现的异常提示解决方案
+```text
 The MIME type of 'C:\\Users\\人事管理流程.docx' is "cannot open `c:\\users\\\\344\\272\\272\\344\\272\\213\\347\\256\\241\\347\\220\\206\\346\\265\\201\\347\\250\\213.docx' (no such file or directory)". This file type is not currently supported in unstructured.
 ```
 
