@@ -11,7 +11,9 @@ from langchain_core.retrievers import BaseRetriever
 from langchain_openai import OpenAI
 
 from src import DocumentChunker
+from dotenv import load_dotenv
 
+load_dotenv()
 # 设置知识库 向量模型 重排序模型的路径
 embedding_model = 'BAAI/bge-large-zh-v1.5'  # 向量模型
 rerank_model = 'BAAI/bge-reranker-large'  # 重排序模型
@@ -36,9 +38,8 @@ class Knowledge:
         """是否已经对文件进行向量存储"""
         return True if os.path.exists(os.path.join(chroma_dir, collection_name)) else False
 
-    def upload_knowledge(self, temp_file):
+    def upload_knowledge(self, file_path):
         """上传知识库文件"""
-        file_path = os.path.basename(temp_file)
         # 当前文件的md5值作为表面，随便判断是否已经存在向量数据库
         collection_name = self.get_file_md5(file_path)
         if self.is_already_vector_database(collection_name):
@@ -56,9 +57,8 @@ class Knowledge:
             embedding_function=self._embeddings
         )
 
-    def get_retrievers(self, collection: str) -> BaseRetriever:
+    def get_retrievers(self, file_path: str) -> BaseRetriever:
         """根据文档名称获取该文档的检索器"""
-        file_path = os.path.basename(collection)
         # 当前文件的md5值作为表面，随便判断是否已经存在向量数据库
         collection_name = self.get_file_md5(file_path)
 
