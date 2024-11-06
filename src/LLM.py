@@ -26,11 +26,11 @@ class LLM:
         self.create_chat_prompt()  # 创建聊天模板
 
     def create_chat_prompt(self) -> None:
-        AI_info = '你叫瓜皮，一个帮助人们解答各种问题的助手。'
+        ai_info = '你叫瓜皮，一个帮助人们解答各种问题的助手。'
 
         # AI系统prompt
         knowledge_system_prompt = (
-            f"{AI_info} 使用检索到的上下文来回答问题。如果你不知道答案，就说你不知道。\n\n"
+            f"{ai_info} 使用检索到的上下文来回答问题。如果你不知道答案，就说你不知道。\n\n"
             "{context}"
         )
 
@@ -45,7 +45,7 @@ class LLM:
         # 没有指定知识库的模板的AI系统模板
         self.normal_prompt = ChatPromptTemplate.from_messages(  # 正常prompt
             [
-                ("system", AI_info),
+                ("system", ai_info),
                 ("placeholder", "{chat_history}"),
                 ("human", "{input}"),
             ]
