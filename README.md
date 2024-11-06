@@ -12,14 +12,15 @@ Python version==3.10
 链接：https://pan.baidu.com/s/1aiq6AS1ucAs_AX9-Wn_klQ?pwd=ARAR 
 提取码：ARAR
 ```
-
 ###
 
-
-#### 会出现的异常提示解决方案
+#### 项目环境文件.env文件(openai_key)
+需要在项目中创建.env文件，配置以下信息
 ```text
-The MIME type of 'C:\\Users\\人事管理流程.docx' is "cannot open `c:\\users\\\\344\\272\\272\\344\\272\\213\\347\\256\\241\\347\\220\\206\\346\\265\\201\\347\\250\\213.docx' (no such file or directory)". This file type is not currently supported in unstructured.
+OPENAI_API_KEY = ""
+OPENAI_BASE_URL = "https://api.openai.com/v1/"
 ```
+###
 
 解决方案
 """
