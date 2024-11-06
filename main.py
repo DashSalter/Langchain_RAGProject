@@ -10,6 +10,10 @@ proxy_port = '7890'  # 代理的端口
 os.environ['http_proxy'] = f'{proxy_url}:{proxy_port}'
 os.environ['https_proxy'] = f'{proxy_url}:{proxy_port}'
 
+# 设置模型参数
+maximum_length: int = 550  # chatbot的最大回复长度
+default_temperature: float = 1.0  # 温度 0.0-2.0
+
 
 class GUI:
     knowledge = Knowledge(reorder=False)  # 实例化知识库 reorder=False表示不对检索结果进行排序,因为太占用时间了
@@ -41,9 +45,11 @@ class GUI:
                 # 创建一个占比为 1 的列布局，显示进度
                 with gr.Column(scale=1, show_progress=True):
                     # 创建一个滑块，用于设置生成回复的最大长度
-                    max_length = gr.Slider(1, 4095, value=250, step=1.0, label="Maximum length", interactive=True)
+                    max_length = gr.Slider(1, 4095, value=maximum_length, step=1.0, label="Maximum length",
+                                           interactive=True)
                     # 创建一个滑块，用于设置生成回复的温度
-                    temperature = gr.Slider(0, 2, value=1, step=0.01, label="Temperature", interactive=True)
+                    temperature = gr.Slider(0, 2, value=default_temperature, step=0.01, label="Temperature",
+                                            interactive=True)
                     # 创建一个按钮，用于清除聊天记录
                     clear = gr.Button("清除")
                     # 创建一个下拉菜单，用于选择知识库
